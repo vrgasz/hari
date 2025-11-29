@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Global Day Counter</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <main class="shell">
+    <header class="topbar">
+      <div class="logo">⏱️ Neon Counter</div>
+      <div class="top-right">
+        <span id="currentCounterLabel" class="counter-label"></span>
+        <span id="adminBadge" class="badge badge-viewer">Viewer</span>
+      </div>
+    </header>
+
+    <section class="card main-card">
+      <h1 id="counterTitle"></h1>
+      <p class="subtitle">
+        Hitung hari berlalu secara global. Satu URL = satu counter.
+      </p>
+
+      <div class="counter-display">
+        <div class="big-number" id="daysCount">0</div>
+        <div class="unit">hari</div>
+        <div class="time-detail" id="timeDetail">0 jam 0 menit 0 detik</div>
+        <div class="start-info" id="startInfo">Belum ada data.</div>
+      </div>
+
+      <div class="progress-wrapper">
+        <div class="progress-label">
+          <span>Progress (dari 365 hari)</span>
+          <span id="progressText">0%</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+      </div>
+
+      <div id="adminControls" class="admin-controls hidden">
+        <h2>Kontrol Admin</h2>
+        <div class="button-row">
+          <button id="btnStartNow" class="btn primary">Mulai dari Sekarang</button>
+          <button id="btnReset" class="btn ghost">Reset</button>
+        </div>
+
+        <div class="manual-start">
+          <label for="manualStart">Set tanggal &amp; jam mulai manual:</label>
+          <div class="manual-row">
+            <input type="datetime-local" id="manualStart" />
+            <button id="btnSetManual" class="btn outline">Set Waktu</button>
+          </div>
+          <p class="hint">
+            Waktu mengikuti zona waktu device kamu.
+          </p>
+        </div>
+      </div>
+
+      <div class="status" id="statusMsg"></div>
+    </section>
+
+    <section class="card auth-card">
+      <h2>Login Admin</h2>
+      <p class="subtitle small">
+        Hanya admin yang bisa mengubah start / reset. Pengunjung lain hanya bisa melihat.
+      </p>
+
+      <form id="loginForm" class="login-form">
+        <div class="field">
+          <label for="username">Username</label>
+          <input id="username" type="text" autocomplete="username" />
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <input id="password" type="password" autocomplete="current-password" />
+        </div>
+        <div class="button-row">
+          <button type="submit" class="btn primary">Login</button>
+          <button type="button" id="btnLogout" class="btn ghost">Logout</button>
+        </div>
+      </form>
+
+      <p class="meta">
+        URL ini: <code id="urlDisplay"></code><br />
+        ID counter: <code id="idDisplay"></code>
+      </p>
+    </section>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>
